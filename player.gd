@@ -6,13 +6,13 @@ signal hit
 @onready var ship_sprite = $ShipSprite
 @onready var shield_timer_visual = $ShieldTimerVisual
 var is_invul = false
-var screen_size
+var collision_bounds
 var is_shielded = false
 var shield_ready = true
 var player_hp = 3
 
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+	collision_bounds = Vector2(800,520)
 	enginefx.play('idle')
 	shield.play()
 
@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 		enginefx.play('idle')
 
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	position = position.clamp(Vector2.ZERO, collision_bounds)
 
 	if is_shielded:
 		shield.show()

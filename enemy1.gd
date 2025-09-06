@@ -2,7 +2,7 @@ extends Area2D
 @export var speed = 300
 var move = 1
 var timer = 0
-var screen_size
+var collision_bounds
 var movespeed
 var random_pos
 var random_angle
@@ -10,7 +10,7 @@ var direction
 
 func _ready() -> void:
 	direction = Vector2(.5, .75).normalized()
-	screen_size = get_viewport_rect().size
+	collision_bounds = Vector2(800,520)
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	movespeed = rng.randi_range(-40, 180)
@@ -27,12 +27,12 @@ func _process(delta: float) -> void:
 	if (position.x < 0):
 		position.x = 0
 		direction.x *= -1
-	elif (position.x > screen_size.x):
-		position.x = screen_size.x
+	elif (position.x > collision_bounds.x):
+		position.x = collision_bounds.x
 		direction.x *= -1
 	elif (position.y < 0):
 		position.y = 0
 		direction.y *= -1
-	elif (position.y > screen_size.y):
-		position.y = screen_size.y
+	elif (position.y > collision_bounds.y):
+		position.y = collision_bounds.y
 		direction.y *= -1
