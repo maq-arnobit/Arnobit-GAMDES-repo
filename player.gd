@@ -4,6 +4,7 @@ signal hit
 @onready var enginefx = $Engine_effects
 @onready var shield = $Shield
 @onready var ship_sprite = $ShipSprite
+@onready var shield_timer_visual = $ShieldTimerVisual
 var is_invul = false
 var screen_size
 var is_shielded = false
