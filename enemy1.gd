@@ -36,3 +36,13 @@ func _process(delta: float) -> void:
 	elif (position.y > collision_bounds.y):
 		position.y = collision_bounds.y
 		direction.y *= -1
+
+func _on_area_entered(area: Area2D):
+	if area.is_in_group("player_projectiles"):
+		$DeathAnimationTimer.start(0.25)
+		$Sprite2D.hide()
+		$DeathAnimation.show()
+		$DeathAnimation.play()
+
+func _on_death_animation_timer_timeout():
+	queue_free()
