@@ -4,7 +4,7 @@ var numberOfHits = 0
 @onready var shield_timer = $ShieldTimer
 @onready var invul_timer = $InvulnerabilityTimer
 @onready var shield_cd_timer = $ShieldCooldownTimer
-@onready var shield_cd_label = $UI/ShieldCooldownLabel
+@onready var shield_cd_label = $UI/ShieldLabel/CooldownLabel
 @onready var cd_rect = $UI/CooldownRect
 
 func _ready():
