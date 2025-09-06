@@ -41,7 +41,6 @@ func _process(delta: float) -> void:
 	else:
 		shield.hide()
 
-
 func _on_area_entered(area):
 	if area.is_in_group("enemies"):
 		if !is_invul:

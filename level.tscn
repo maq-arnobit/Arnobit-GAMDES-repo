@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://3bynxbfwy551"]
+[gd_scene load_steps=7 format=3 uid="uid://3bynxbfwy551"]
 
 [ext_resource type="Script" uid="uid://ch1gc80gmlcsl" path="res://level.gd" id="1_f2txt"]
 [ext_resource type="PackedScene" uid="uid://dxhjuxxh3b3x" path="res://boss_1.tscn" id="3_oi3di"]
 [ext_resource type="Texture2D" uid="uid://cwnylkb2dm2ow" path="res://graphics/bg1.jpg" id="4_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://b80huxwe514gw" path="res://enemy1.tscn" id="5_f2txt"]
 [ext_resource type="PackedScene" uid="uid://dgil2vxuj5wcv" path="res://player.tscn" id="6_1ainy"]
+[ext_resource type="PackedScene" uid="uid://cd3yd700d4hms" path="res://player_bullet.tscn" id="6_n6hdu"]
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_f2txt")
@@ -36,6 +37,20 @@ position = Vector2(640, 360)
 [node name="enemy2" parent="." instance=ExtResource("5_f2txt")]
 
 [node name="enemy3" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy4" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy5" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy6" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy7" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy8" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy9" parent="." instance=ExtResource("5_f2txt")]
+
+[node name="enemy10" parent="." instance=ExtResource("5_f2txt")]
 
 [node name="ShieldTimer" type="Timer" parent="."]
 one_shot = true
@@ -72,6 +87,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CooldownLabel" type="Label" parent="UI/ShieldLabel"]
+layout_mode = 0
 offset_top = 40.0
 offset_right = 40.0
 offset_bottom = 63.0
@@ -102,6 +118,12 @@ offset_top = 520.0
 offset_right = 800.0
 offset_bottom = 640.0
 color = Color(0, 0, 0, 1)
+
+[node name="player_bullet" parent="." instance=ExtResource("6_n6hdu")]
+position = Vector2(200, 500)
+
+[node name="player_bullet2" parent="." instance=ExtResource("6_n6hdu")]
+position = Vector2(400, 500)
 
 [connection signal="hit" from="player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="ShieldTimer" to="." method="_on_shield_timer_timeout"]
