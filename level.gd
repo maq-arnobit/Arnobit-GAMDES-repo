@@ -42,6 +42,8 @@ func _input(event):
 			
 		else:
 			print('Shield on cooldown')
+	if event.is_action_pressed("shoot"):
+		player_shoot()
 
 func _on_shield_timer_timeout():
 	player.is_shielded = false
@@ -64,3 +66,9 @@ func _on_invulnerability_timer_timeout() -> void:
 	player.modulate.a = 1
 	player.is_invul = false
 	$UI/TakeDamageHint.hide()
+
+func player_shoot():
+	var bullet = preload("res://player_bullet.tscn")
+	var instance = bullet.instantiate()
+	add_child(instance)
+	instance.global_position = player.position
