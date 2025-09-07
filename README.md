@@ -1,3 +1,1 @@
-# maquier hans arnobit
-# GAMDES1
-# spacewar
+# spacewar | maquier hans arnobit | GAMDES1
