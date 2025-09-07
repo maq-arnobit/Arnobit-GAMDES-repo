@@ -47,3 +47,4 @@ func _on_area_entered(area):
 			hit.emit()
 		else:
 			print('Getting hit but invulnerable')
+			

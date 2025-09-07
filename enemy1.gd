@@ -7,6 +7,7 @@ var movespeed
 var random_pos
 var random_angle
 var direction
+var hp = 3
 
 func _ready() -> void:
 	direction = Vector2(.5, .75).normalized()
@@ -39,10 +40,16 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("player_projectiles"):
-		$DeathAnimationTimer.start(0.25)
-		$Sprite2D.hide()
-		$DeathAnimation.show()
-		$DeathAnimation.play()
+		var hit_fx = preload("res://bullet_hit_fx.tscn")
+		var instance = hit_fx.instantiate()
+		add_child(instance)
+		instance.global_position = area.position
+		hp -= area.damage
+		if hp == 0:
+			$DeathAnimationTimer.start(0.25)
+			$Sprite2D.hide()
+			$DeathAnimation.show()
+			$DeathAnimation.play()
 
 func _on_death_animation_timer_timeout():
 	queue_free()
