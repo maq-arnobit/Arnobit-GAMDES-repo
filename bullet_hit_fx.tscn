@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckxikieu35mar"]
+
+[ext_resource type="Texture2D" uid="uid://bgro2jxvanf26" path="res://graphics/Explosion.png" id="1_kynay"]
+[ext_resource type="Script" uid="uid://q6kkaib2exd4" path="res://bullet_hit_fx.gd" id="2_b3yip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3yip"]
+atlas = ExtResource("1_kynay")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjcoh"]
+atlas = ExtResource("1_kynay")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xb51i"]
+atlas = ExtResource("1_kynay")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4prod"]
+atlas = ExtResource("1_kynay")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8whm"]
+atlas = ExtResource("1_kynay")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd7pn"]
+atlas = ExtResource("1_kynay")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq2sh"]
+atlas = ExtResource("1_kynay")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivpan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3yip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjcoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xb51i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4prod")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8whm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd7pn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq2sh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="BulletHitFX" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_ivpan")
+frame = 4
+frame_progress = 0.106391
+script = ExtResource("2_b3yip")
+
+[node name="FXTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FXTimer" to="." method="_on_fx_timer_timeout"]
